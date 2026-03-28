@@ -4,6 +4,9 @@ import { useStore } from "@/store";
 import { formatMoney, timeAgo } from "@/lib/utils";
 import StatusBadge from "@/components/ui/StatusBadge";
 
+// console.log("URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
+// console.log("KEY:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.slice(0, 20));
+
 function StatCard({ label, value, accent }: { label:string; value:string; accent:string }) {
   return (
     <div className="glass" style={{ borderRadius:16, padding:"18px 20px" }}>
