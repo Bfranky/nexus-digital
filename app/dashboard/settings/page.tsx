@@ -49,10 +49,10 @@ export default function SettingsPage() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {[
-              { label: "Full Name",    placeholder: "Your name",           defaultValue: "Admin User" },
-              { label: "Email",        placeholder: "you@example.com",     defaultValue: "admin@nexus.digitals" },
-              { label: "Phone",        placeholder: "+234 800 000 0000",   defaultValue: "" },
-              { label: "Agency Name",  placeholder: "Your agency",         defaultValue: "Nexus Digitals" },
+              { label: "Full Name",    placeholder: "Your name",           defaultValue: "Blessed Ogobor" },
+              { label: "Email",        placeholder: "you@example.com",     defaultValue: "blessedogobor@gmail.com" },
+              { label: "Phone",        placeholder: "+234 800 000 0000",   defaultValue: "09069321502" },
+              { label: "Agency Name",  placeholder: "Your agency",         defaultValue: "Nexora Digital" },
             ].map(f => (
               <div key={f.label}>
                 <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 8 }}>{f.label}</label>
@@ -73,6 +73,24 @@ export default function SettingsPage() {
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {[
             {
+              name: "OPay Business Account",
+              desc: "Primary Nigerian settlement bank account: 6110509465 (Blessed Ogobor / Nexora Digital).",
+              status: "connected",
+              color: "#4ade80", icon: "🏦",
+            },
+            {
+              name: "MiniPay (Scan to Pay)",
+              desc: "Instant QR scan payments routed directly to your OPay business account.",
+              status: "connected",
+              color: "#06b6d4", icon: "📱",
+            },
+            {
+              name: "Monnify API",
+              desc: "Automated virtual bank accounts for checkout. Add NEXT_PUBLIC_MONNIFY_API_KEY & CONTRACT_CODE.",
+              status: "manual",
+              color: "#818cf8", icon: "💳",
+            },
+            {
               name: "Supabase",
               desc: "Database & real-time sync. Required for all data storage.",
               status: process.env.NEXT_PUBLIC_SUPABASE_URL ? "connected" : "not_set",
@@ -86,15 +104,9 @@ export default function SettingsPage() {
             },
             {
               name: "WhatsApp Business API",
-              desc: "Auto-send and receive WhatsApp messages. Coming soon.",
-              status: "coming_soon",
-              color: "#fbbf24", icon: "💬",
-            },
-            {
-              name: "Google Maps API",
-              desc: "Auto-scrape businesses. Coming soon.",
-              status: "coming_soon",
-              color: "#fbbf24", icon: "🗺",
+              desc: "Auto-send and receive WhatsApp messages via 09069321502.",
+              status: "connected",
+              color: "#4ade80", icon: "💬",
             },
           ].map(({ name, desc, status, color, icon }) => (
             <div key={name} className="glass" style={{ borderRadius: 14, padding: "18px 20px", display: "flex", alignItems: "center", gap: 16 }}>

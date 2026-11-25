@@ -24,16 +24,16 @@ export default function LoginPage() {
             fontSize: "1.5rem", boxShadow: "0 0 24px rgba(99,102,241,0.3)",
           }}>⚡</div>
           <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1.4rem", color: "#fff", letterSpacing: "-0.02em" }}>
-            nexus<span style={{ color: "#818cf8" }}>.</span>digitals
+            nexora<span style={{ color: "#818cf8" }}>.</span>digital
           </h1>
-          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: 6 }}>Sign in to your dashboard</p>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginTop: 6 }}>Sign in to your agency portal</p>
         </div>
 
-        {/* Form — wired to Supabase auth (add server action later) */}
+        {/* Form */}
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div>
             <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 7 }}>Email</label>
-            <input className="field" type="email" placeholder="you@example.com" defaultValue="admin@nexus.digitals" />
+            <input className="field" type="email" placeholder="you@example.com" defaultValue="blessedogobor@gmail.com" />
           </div>
           <div>
             <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 7 }}>Password</label>
