@@ -50,11 +50,11 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     client: "UGET Academy Education Portal",
     category: "Full Platform",
     categorySlug: "platform",
-    description: "Comprehensive educational platform built from scratch with student accounts, instructor dashboards, course modules, video delivery, Monnify & MiniPay tuition payments, and automated certificates.",
+    description: "Comprehensive educational platform built from scratch with student accounts, instructor dashboards, course modules, video delivery, MiniPay QR & direct bank tuition payments, and automated certificates.",
     deliverables: [
       "Role-based authentication (Students, Mentors, Admins)",
       "Interactive course syllabus & lesson tracking",
-      "Monnify automated bank transfer & MiniPay QR checkout",
+      "MiniPay QR checkout & direct bank transfer ledger",
       "Student progress tracker & completion certificates",
       "Admin revenue analytics & enrollment manager"
     ],
@@ -66,7 +66,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     featured: true,
     badge: "🎓 Full-Scale EdTech",
     impactMetric: "Handled 1,200+ students and automated course payments",
-    tags: ["Next.js", "React", "PostgreSQL", "Monnify API", "MiniPay", "Tailwind"],
+    tags: ["Next.js", "React", "PostgreSQL", "MiniPay", "OPay API", "Tailwind"],
     highlights: ["Automated student enrollments", "Instant payment verification", "Mobile-optimized course viewer"]
   },
   {
@@ -153,7 +153,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     description: "Modern fashion showcase catalog featuring seasonal collections, size recommendations, WhatsApp consultation, and online deposit payment for bespoke tailoring.",
     deliverables: [
       "Interactive lookbook with zoomable product images",
-      "Monnify automated transfer & MiniPay Scan-to-Pay checkout",
+      "MiniPay Scan-to-Pay QR & direct bank deposit checkout",
       "Bespoke measurement guide & WhatsApp stylist consultation",
       "Instagram feed sync & customer styling testimonials",
       "Abandoned inquiry recovery mechanism"
@@ -166,7 +166,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     featured: false,
     badge: "👗 E-Commerce & Retail",
     impactMetric: "Generated ₦1.8M in orders within the first month",
-    tags: ["Next.js", "Monnify API", "MiniPay", "Tailwind CSS", "Cloudinary"],
+    tags: ["Next.js", "MiniPay", "OPay Bank Transfer", "Tailwind CSS", "Cloudinary"],
     highlights: ["Integrated card and bank transfers", "Mobile gallery slider", "Measurement guide"]
   }
 ];
@@ -244,7 +244,7 @@ export const PRICING_PACKAGES: PackageTier[] = [
     features: [
       "Custom SQL / Supabase database integration",
       "Easy-to-use Admin Panel (edit prices, rooms, menu without code)",
-      "Monnify automated bank transfer & MiniPay scan-to-pay integration",
+      "MiniPay QR scan & direct bank transfer deposit integration",
       "Real-time reservation & appointment schedule management",
       "Automated WhatsApp & Email customer notification receipts",
       "Advanced on-page SEO optimization & Google Search Console setup",

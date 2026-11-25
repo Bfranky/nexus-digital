@@ -80,15 +80,15 @@ export default function SettingsPage() {
             },
             {
               name: "MiniPay (Scan to Pay)",
-              desc: "Instant QR scan payments routed directly to your OPay business account.",
+              desc: "Official QR Code & MiniPay number: +234 812 141 4107. Auto-settles to OPay account.",
               status: "connected",
               color: "#06b6d4", icon: "📱",
             },
             {
-              name: "Monnify API",
-              desc: "Automated virtual bank accounts for checkout. Add NEXT_PUBLIC_MONNIFY_API_KEY & CONTRACT_CODE.",
-              status: "manual",
-              color: "#818cf8", icon: "💳",
+              name: "Monnify API (Virtual Accounts)",
+              desc: "Automated virtual bank accounts for checkout. Pending CAC business registration.",
+              status: "coming_soon",
+              color: "#fbbf24", icon: "💳",
             },
             {
               name: "Supabase",

@@ -67,11 +67,11 @@ const ADDONS: Addon[] = [
     desc: "₦0 monthly hosting fees on modern edge servers",
   },
   {
-    id: "minipay_monnify",
-    name: "MiniPay Scan-to-Pay & Monnify Virtual Transfer",
-    price: 30000,
-    days: 2,
-    desc: "QR scan payments with MiniPay + automated Nigerian bank transfers to your account",
+    id: "minipay_opay",
+    name: "MiniPay QR Scan & OPay Direct Checkout",
+    price: 0,
+    days: 0,
+    desc: "Instant QR scan payments via MiniPay (+234 812 141 4107) + OPay transfer in Naira",
   },
   {
     id: "qr",
@@ -397,11 +397,10 @@ I would like to confirm availability and get started!`
                   <code style={{ color: "#fff", fontWeight: 700, fontSize: "0.85rem" }}>{BRAND.payment.opayBusiness.accountNumber}</code>
                   <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>{BRAND.payment.opayBusiness.accountName}</div>
                 </div>
-                <div style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
-                  📱 <strong>MiniPay (Scan to Pay):</strong> Pay in Naira via QR code; auto-settles to OPay.
-                </div>
-                <div style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
-                  🏦 <strong>Monnify Automated Transfer:</strong> Dynamic virtual account with auto-confirmation.
+                <div style={{ background: "rgba(0,0,0,0.3)", padding: "8px 10px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.06)" }}>
+                  <span style={{ color: "#38bdf8", fontWeight: 700 }}>📱 MiniPay Scan QR: </span>
+                  <code style={{ color: "#fff", fontWeight: 700, fontSize: "0.85rem" }}>{BRAND.payment.miniPay.number}</code>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>Scan QR Code or send to MiniPay number</div>
                 </div>
               </div>
             </div>

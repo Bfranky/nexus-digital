@@ -7,9 +7,10 @@ import { formatMoney } from "@/lib/utils";
 export default function AgentPackagePresenter() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPkg, setSelectedPkg] = useState<PackageTier>(PRICING_PACKAGES[1]); // default Festive Booking
-  const [paymentMethod, setPaymentMethod] = useState<"minipay" | "monnify" | "bank_transfer">("bank_transfer");
+  const [paymentMethod, setPaymentMethod] = useState<"minipay" | "bank_transfer">("minipay");
   const [copied, setCopied] = useState(false);
   const [copiedAccount, setCopiedAccount] = useState(false);
+  const [copiedMiniPay, setCopiedMiniPay] = useState(false);
 
   const referralCommission = Math.round(selectedPkg.priceNumeric * 0.1);
   const closingCommission = Math.round(selectedPkg.priceNumeric * 0.2);
@@ -17,23 +18,15 @@ export default function AgentPackagePresenter() {
   const getPaymentDetails = () => {
     if (paymentMethod === "minipay") {
       return {
-        title: "MiniPay (Scan-to-Pay QR)",
-        desc: `Client scans the MiniPay QR code with Opera Mini or any smartphone. They pay in Naira (NGN), and it auto-settles directly into your OPay business account (${BRAND.payment.opayBusiness.accountNumber}).`,
+        title: "MiniPay (Scan-to-Pay QR & Phone Number)",
+        desc: "Clients can scan our official MiniPay QR Code using Opera Mini or any smartphone, or pay directly to MiniPay number: +234 812 141 4107. Zero card decline issues, instant settlement in Nigerian currency.",
         badge: "⚡ Instant Scan QR",
-        accountSnippet: `OPay Business Account: ${BRAND.payment.opayBusiness.accountNumber} (${BRAND.payment.opayBusiness.accountName})`,
-      };
-    }
-    if (paymentMethod === "monnify") {
-      return {
-        title: "Monnify Automated Bank Transfer",
-        desc: `Generates a dedicated instant virtual account number (Wema / Moniepoint) for each client. Transfers auto-confirm in seconds and settle directly into your OPay account (${BRAND.payment.opayBusiness.accountNumber}).`,
-        badge: "🏦 Virtual Account Transfer",
-        accountSnippet: `OPay Settlement: ${BRAND.payment.opayBusiness.accountNumber} (${BRAND.payment.opayBusiness.accountName})`,
+        accountSnippet: `MiniPay Number: ${BRAND.payment.miniPay.number}\nScan QR: Available in chat/modal\nSettlement: Auto-credited to OPay ${BRAND.payment.opayBusiness.accountNumber}`,
       };
     }
     return {
       title: "Direct OPay Bank Transfer",
-      desc: `Direct bank transfer to OPay Account: ${BRAND.payment.opayBusiness.accountNumber} (${BRAND.payment.opayBusiness.accountName}). Client sends receipt on WhatsApp for instant project kick-off.`,
+      desc: `Direct bank transfer to OPay Account: ${BRAND.payment.opayBusiness.accountNumber} (${BRAND.payment.opayBusiness.accountName}). Client sends transfer screenshot to WhatsApp for immediate activation.`,
       badge: "💳 Instant Bank Deposit",
       accountSnippet: `Bank: ${BRAND.payment.opayBusiness.bankName}\nAccount Number: ${BRAND.payment.opayBusiness.accountNumber}\nAccount Name: ${BRAND.payment.opayBusiness.accountName}`,
     };
@@ -50,9 +43,12 @@ export default function AgentPackagePresenter() {
 Deliverables Included:
 ${selectedPkg.features.map(f => `• ${f}`).join("\n")}
 
-💳 Payment Details (Instant Confirmation):
-• ${payment.title}
-• ${payment.accountSnippet}
+💳 Payment Options (Zero Card Declines):
+1. 📱 MiniPay (Scan QR): Send to ${BRAND.payment.miniPay.number} or scan our MiniPay QR
+2. 🏦 OPay Bank Transfer:
+   • Bank: ${BRAND.payment.opayBusiness.bankName}
+   • Account Number: ${BRAND.payment.opayBusiness.accountNumber}
+   • Account Name: ${BRAND.payment.opayBusiness.accountName}
 
 Contact & Developer: ${BRAND.developerName} (${BRAND.name})
 WhatsApp: ${BRAND.phone} | Email: ${BRAND.email}
@@ -70,6 +66,12 @@ Would you like us to generate a free preview mockup with your business name?`;
     navigator.clipboard.writeText(BRAND.payment.opayBusiness.accountNumber);
     setCopiedAccount(true);
     setTimeout(() => setCopiedAccount(false), 2000);
+  };
+
+  const copyMiniPayNumber = () => {
+    navigator.clipboard.writeText(BRAND.payment.miniPay.number);
+    setCopiedMiniPay(true);
+    setTimeout(() => setCopiedMiniPay(false), 2000);
   };
 
   return (
@@ -116,8 +118,8 @@ Would you like us to generate a free preview mockup with your business name?`;
             className="glass"
             style={{
               width: "100%",
-              maxWidth: 760,
-              maxHeight: "90vh",
+              maxWidth: 780,
+              maxHeight: "92vh",
               borderRadius: 20,
               padding: "24px 28px",
               background: "#0d0e1c",
@@ -227,95 +229,183 @@ Would you like us to generate a free preview mockup with your business name?`;
             {/* Step 2: Payment Method Details */}
             <div style={{ marginBottom: 20 }}>
               <label style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "block", marginBottom: 8, fontWeight: 700 }}>
-                2. EXPLAIN HOW CLIENT CAN PAY (NO REGISTRATION BOTTLENECKS)
+                2. ACTIVE CLIENT PAYMENT OPTIONS (ZERO CARD DECLINE ISSUES)
               </label>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8, marginBottom: 12 }}>
-                {[
-                  { id: "minipay", label: "📱 MiniPay App (Scan QR)", badge: "Instant Scan" },
-                  { id: "monnify", label: "🏦 Monnify Transfer", badge: "Auto-Confirm" },
-                  { id: "bank_transfer", label: "💳 Direct Bank Deposit", badge: "Direct NGN" },
-                ].map(m => (
-                  <button
-                    key={m.id}
-                    type="button"
-                    onClick={() => setPaymentMethod(m.id as any)}
-                    style={{
-                      padding: "8px 12px",
-                      borderRadius: 10,
-                      border: "1px solid",
-                      borderColor: paymentMethod === m.id ? "#06b6d4" : "var(--border)",
-                      background: paymentMethod === m.id ? "rgba(6,182,212,0.14)" : "var(--bg-raised)",
-                      color: paymentMethod === m.id ? "#fff" : "var(--text-muted)",
-                      textAlign: "left",
-                      cursor: "pointer",
-                      fontSize: "0.78rem",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {m.label}
-                  </button>
-                ))}
+              <div style={{ display: "flex", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod("minipay")}
+                  style={{
+                    padding: "9px 16px",
+                    borderRadius: 10,
+                    border: "1px solid",
+                    borderColor: paymentMethod === "minipay" ? "#06b6d4" : "var(--border)",
+                    background: paymentMethod === "minipay" ? "rgba(6,182,212,0.18)" : "var(--bg-raised)",
+                    color: paymentMethod === "minipay" ? "#fff" : "var(--text-muted)",
+                    cursor: "pointer",
+                    fontSize: "0.82rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  📱 MiniPay (Scan QR / +234 812 141 4107)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod("bank_transfer")}
+                  style={{
+                    padding: "9px 16px",
+                    borderRadius: 10,
+                    border: "1px solid",
+                    borderColor: paymentMethod === "bank_transfer" ? "#4ade80" : "var(--border)",
+                    background: paymentMethod === "bank_transfer" ? "rgba(34,197,94,0.18)" : "var(--bg-raised)",
+                    color: paymentMethod === "bank_transfer" ? "#fff" : "var(--text-muted)",
+                    cursor: "pointer",
+                    fontSize: "0.82rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  🏦 OPay Transfer (6110509465)
+                </button>
               </div>
 
               {/* Active Payment Explanation Card */}
               <div
                 style={{
                   background: "var(--bg-raised)",
-                  borderRadius: 12,
-                  padding: "14px 16px",
+                  borderRadius: 14,
+                  padding: "16px 20px",
                   border: "1px solid var(--border)",
                 }}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                  <div style={{ fontWeight: 700, fontSize: "0.85rem", color: "#fff" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                  <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "#fff" }}>
                     {payment.title}
                   </div>
                   <span
                     className="badge"
                     style={{
-                      background: "rgba(6,182,212,0.15)",
-                      color: "#38bdf8",
-                      borderColor: "rgba(6,182,212,0.3)",
-                      fontSize: "0.68rem",
+                      background: paymentMethod === "minipay" ? "rgba(6,182,212,0.15)" : "rgba(34,197,94,0.15)",
+                      color: paymentMethod === "minipay" ? "#38bdf8" : "#4ade80",
+                      borderColor: paymentMethod === "minipay" ? "rgba(6,182,212,0.3)" : "rgba(34,197,94,0.3)",
+                      fontSize: "0.7rem",
                     }}
                   >
                     {payment.badge}
                   </span>
                 </div>
-                <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: 10 }}>
+
+                <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", lineHeight: 1.55, marginBottom: 14 }}>
                   {payment.desc}
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "8px 12px",
-                    background: "rgba(0,0,0,0.35)",
-                    borderRadius: 8,
-                    border: "1px solid rgba(255,255,255,0.08)",
-                  }}
-                >
-                  <div style={{ fontSize: "0.78rem", color: "#fff" }}>
-                    🏦 <strong>OPay:</strong> <code style={{ color: "#4ade80", fontSize: "0.88rem" }}>{BRAND.payment.opayBusiness.accountNumber}</code> ({BRAND.payment.opayBusiness.accountName})
-                  </div>
-                  <button
-                    type="button"
-                    onClick={copyAccountNumber}
+
+                {/* If MiniPay: Render QR Code & Copy Number */}
+                {paymentMethod === "minipay" && (
+                  <div
                     style={{
-                      background: "rgba(34,197,94,0.15)",
-                      border: "1px solid rgba(34,197,94,0.3)",
-                      borderRadius: 6,
-                      color: "#4ade80",
-                      fontSize: "0.72rem",
-                      fontWeight: 700,
-                      padding: "4px 10px",
-                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 18,
+                      background: "rgba(0,0,0,0.35)",
+                      borderRadius: 12,
+                      padding: "14px",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      flexWrap: "wrap",
                     }}
                   >
-                    {copiedAccount ? "✓ Copied Account!" : "📋 Copy Account"}
-                  </button>
-                </div>
+                    {/* QR Code thumbnail */}
+                    <div style={{ textAlign: "center" }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/minipay-qr.png"
+                        alt="MiniPay Official QR Code"
+                        style={{
+                          width: 140,
+                          height: 140,
+                          borderRadius: 12,
+                          border: "2px solid #06b6d4",
+                          objectFit: "contain",
+                          background: "#fff",
+                        }}
+                      />
+                      <div style={{ fontSize: "0.68rem", color: "#38bdf8", marginTop: 4 }}>
+                        Scan in MiniPay
+                      </div>
+                    </div>
+
+                    <div style={{ flex: 1, minWidth: 200 }}>
+                      <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
+                        MiniPay Account Number
+                      </div>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: "1.05rem", fontWeight: 700, color: "#fff", margin: "4px 0 8px" }}>
+                        {BRAND.payment.miniPay.number}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={copyMiniPayNumber}
+                        style={{
+                          background: "rgba(6,182,212,0.18)",
+                          border: "1px solid rgba(6,182,212,0.4)",
+                          borderRadius: 8,
+                          color: "#38bdf8",
+                          fontSize: "0.75rem",
+                          fontWeight: 700,
+                          padding: "6px 14px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {copiedMiniPay ? "✓ Copied MiniPay Number!" : "📋 Copy MiniPay Number"}
+                      </button>
+                      <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", marginTop: 8 }}>
+                        Auto-settles to OPay: <strong>{BRAND.payment.opayBusiness.accountNumber}</strong>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* If OPay Bank Transfer */}
+                {paymentMethod === "bank_transfer" && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "12px 16px",
+                      background: "rgba(0,0,0,0.35)",
+                      borderRadius: 10,
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      flexWrap: "wrap",
+                      gap: 12,
+                    }}
+                  >
+                    <div>
+                      <div style={{ fontSize: "0.72rem", color: "var(--text-muted)" }}>
+                        BANK NAME: <strong style={{ color: "#fff" }}>{BRAND.payment.opayBusiness.bankName}</strong>
+                      </div>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: "1.1rem", fontWeight: 800, color: "#4ade80", margin: "3px 0" }}>
+                        {BRAND.payment.opayBusiness.accountNumber}
+                      </div>
+                      <div style={{ fontSize: "0.72rem", color: "var(--text-muted)" }}>
+                        ACCOUNT NAME: <strong style={{ color: "#fff" }}>{BRAND.payment.opayBusiness.accountName}</strong>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={copyAccountNumber}
+                      style={{
+                        background: "rgba(34,197,94,0.18)",
+                        border: "1px solid rgba(34,197,94,0.4)",
+                        borderRadius: 8,
+                        color: "#4ade80",
+                        fontSize: "0.78rem",
+                        fontWeight: 700,
+                        padding: "8px 16px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {copiedAccount ? "✓ Copied Account!" : "📋 Copy OPay Account"}
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 

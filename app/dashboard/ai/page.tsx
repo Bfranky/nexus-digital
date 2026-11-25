@@ -50,7 +50,7 @@ Here are our transparent pricing packages:
 
 3. 💼 Professional Platform (₦300,000 – ₦500,000):
    • Database-driven website + simple admin panel
-   • MiniPay QR scan & Monnify automated bank transfer integration
+   • MiniPay QR scan & direct OPay bank transfer integration
    • Manage bookings, services, and client inquiries
 
 4. 🏢 Full Enterprise Platform (₦700,000 – ₦900,000):
