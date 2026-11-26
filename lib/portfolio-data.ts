@@ -12,10 +12,10 @@ export const WORKS: WorkProject[] = [
   {
     id: "new-c",
     title: "New-C",
-    type: "Luxury Real Estate & Living",
+    type: "Beauty & Makeup App",
     liveUrl: "https://new-c-eight.vercel.app",
     githubUrl: "https://github.com/Bfranky/new-c",
-    desc: "Luxury architecture, spacious residential layouts, and modern property showcase.",
+    desc: "Cosmetics, beauty studio makeover booking, and skincare products showcase.",
   },
   {
     id: "merit-auto",

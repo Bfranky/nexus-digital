@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Nexus Digital — Websites & Web Platforms | Lagos, Nigeria",
-  description: "Websites, booking engines, and digital platforms for businesses. Built by Ogobor Blessing. Fast delivery, zero monthly hosting, and direct WhatsApp integrations.",
+  description: "Websites, booking engines, and digital platforms for businesses. Fast delivery, zero monthly hosting, and direct WhatsApp integrations.",
   keywords: [
     "web development Lagos",
     "website designer Nigeria",

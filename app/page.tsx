@@ -82,7 +82,7 @@ export default function Home() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <section style={{ padding: "50px 16px 36px", maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 99, background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.3)", color: "#818cf8", fontSize: "0.78rem", fontWeight: 600, marginBottom: 16 }}>
-          <span>⚡ Web Developer · Ogobor Blessing</span>
+          <span>⚡ Web Developer · Lagos, Nigeria</span>
         </div>
 
         <h1 style={{ fontSize: "clamp(1.9rem, 6vw, 3.2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: 14 }}>
@@ -90,8 +90,7 @@ export default function Home() {
         </h1>
 
         <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)", color: "#94a3b8", maxWidth: 580, margin: "0 auto 26px", lineHeight: 1.6 }}>
-          From fast 1-page booking sites to custom platforms. Built by Ogobor Blessing.
-          Custom-coded to your exact specifications in whatever language fits your business best.
+          From fast 1-page booking sites to custom platforms. Custom-coded to your exact specifications in whatever technology fits your business best.
         </p>
 
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -99,7 +98,7 @@ export default function Home() {
             href="#works"
             style={{ background: "#4f46e5", color: "#fff", padding: "12px 24px", borderRadius: 12, textDecoration: "none", fontWeight: 700, fontSize: "0.92rem" }}
           >
-            See My Works ↓
+            Works Done &amp; Sample ↓
           </a>
           <a
             href="https://wa.me/2349069321502?text=Hello%20Blessing!%20I%20want%20to%20build%20a%20website%20for%20my%20business."
@@ -412,7 +411,7 @@ export default function Home() {
             nexus<span style={{ color: "#6366f1" }}>.</span>digital
           </div>
           <div>
-            Built by Ogobor Blessing · WhatsApp: 09069321502
+            WhatsApp: 09069321502 · Lagos, Nigeria
           </div>
           <div>
             © {new Date().getFullYear()} Nexus Digital
