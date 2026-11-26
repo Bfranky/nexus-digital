@@ -1,595 +1,416 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import FestiveBanner from "@/components/festive/FestiveBanner";
-import PortfolioFilterSection from "@/components/portfolio/PortfolioFilterSection";
-import PricingPackagesSection from "@/components/pricing/PricingPackagesSection";
-import WebsiteCostCalculator from "@/components/calculator/WebsiteCostCalculator";
-import RealTestimonialsSection from "@/components/testimonials/RealTestimonialsSection";
-import AgentProgramSection from "@/components/agent/AgentProgramSection";
+import { WORKS, SIMPLE_PACKAGES } from "@/lib/portfolio-data";
+import { BRAND } from "@/lib/brand-config";
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [copiedOpay, setCopiedOpay] = useState(false);
+  const [copiedMiniPay, setCopiedMiniPay] = useState(false);
+
+  const copyOpay = () => {
+    navigator.clipboard.writeText(BRAND.payment.opayBusiness.accountNumber);
+    setCopiedOpay(true);
+    setTimeout(() => setCopiedOpay(false), 2000);
+  };
+
+  const copyMiniPay = () => {
+    navigator.clipboard.writeText(BRAND.payment.miniPay.number);
+    setCopiedMiniPay(true);
+    setTimeout(() => setCopiedMiniPay(false), 2000);
+  };
 
   return (
-    <div style={{ background: "var(--bg)", color: "var(--text)", minHeight: "100vh" }}>
-      {/* Festive Season Alert Bar */}
-      <FestiveBanner />
-
-      {/* Main Navigation */}
-      <nav
-        style={{
-          position: "sticky",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          borderBottom: "1px solid var(--border)",
-          background: "rgba(9,9,15,0.85)",
-          backdropFilter: "blur(14px)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1240,
-            margin: "0 auto",
-            padding: "0 20px",
-            height: 64,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          {/* Logo */}
-          <Link
-            href="/"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 800,
-              fontSize: "1.25rem",
-              letterSpacing: "-0.02em",
-              color: "#fff",
-              textDecoration: "none",
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-            }}
-          >
-            nexora<span style={{ color: "#818cf8" }}>.</span>digital
+    <div style={{ background: "#0c0d12", color: "#f1f5f9", minHeight: "100vh", fontFamily: "var(--font-body, sans-serif)", overflowX: "hidden" }}>
+      
+      {/* ── Navigation ─────────────────────────────────────────────────── */}
+      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(12, 13, 18, 0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 16px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          
+          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>
+            <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#6366f1", display: "inline-block" }} />
+            <span style={{ fontSize: "1.15rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
+              nexora<span style={{ color: "#6366f1" }}>.</span>digital
+            </span>
           </Link>
 
-          {/* Desktop Links */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 22,
-            }}
-            className="hidden md:flex"
-          >
-            <a
-              href="#portfolio"
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                color: "var(--text-muted)",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}
-            >
-              Works Done
-            </a>
-            <a
-              href="#pricing"
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                color: "var(--text-muted)",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}
-            >
-              Packages &amp; Prices
-            </a>
-            <a
-              href="#calculator"
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                color: "var(--text-muted)",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}
-            >
-              Cost Estimator
-            </a>
-            <a
-              href="#testimonials"
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                color: "var(--text-muted)",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}
-            >
-              Testimonials
-            </a>
-            <a
-              href="#agent"
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                color: "#4ade80",
-                textDecoration: "none",
-                transition: "opacity 0.15s",
-              }}
-            >
-              Earn (10%–25%)
-            </a>
-            <Link
-              href="/dashboard"
-              style={{
-                fontSize: "0.85rem",
-                color: "var(--text-muted)",
-                textDecoration: "none",
-                padding: "6px 12px",
-                borderRadius: 8,
-                background: "rgba(255,255,255,0.05)",
-              }}
-            >
-              Agency App ↗
+          {/* Desktop Nav */}
+          <div className="hidden md:flex" style={{ alignItems: "center", gap: 24 }}>
+            <a href="#works" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem", fontWeight: 500 }}>Works</a>
+            <a href="#pricing" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem", fontWeight: 500 }}>Packages</a>
+            <a href="#payment" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem", fontWeight: 500 }}>Payment</a>
+            <Link href="/dashboard" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.85rem", padding: "6px 12px", borderRadius: 8, background: "rgba(255,255,255,0.05)" }}>
+              Dashboard ↗
             </Link>
             <a
-              href="https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20want%20to%20discuss%20a%20website%20for%20my%20business."
+              href="https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20am%20interested%20in%20building%20a%20website%20for%20my%20business."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
-              style={{
-                padding: "8px 16px",
-                borderRadius: 10,
-                fontSize: "0.82rem",
-                textDecoration: "none",
-              }}
+              style={{ background: "#4f46e5", color: "#fff", padding: "8px 16px", borderRadius: 10, textDecoration: "none", fontSize: "0.85rem", fontWeight: 600 }}
             >
-              💬 WhatsApp Us
+              WhatsApp
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenu(!mobileMenu)}
             className="md:hidden"
-            aria-label="Toggle navigation"
-            style={{
-              background: "transparent",
-              border: "1px solid var(--border)",
-              borderRadius: 8,
-              color: "#fff",
-              padding: "6px 10px",
-              cursor: "pointer",
-            }}
+            aria-label="Toggle menu"
+            style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", color: "#fff", padding: "6px 12px", borderRadius: 8, fontSize: "1rem", cursor: "pointer" }}
           >
-            {mobileMenuOpen ? "✕" : "☰"}
+            {mobileMenu ? "✕" : "☰"}
           </button>
         </div>
 
         {/* Mobile Dropdown */}
-        {mobileMenuOpen && (
-          <div
-            style={{
-              background: "var(--bg-card)",
-              borderBottom: "1px solid var(--border)",
-              padding: "16px 20px",
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-            }}
-          >
+        {mobileMenu && (
+          <div style={{ background: "#13141c", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "16px", display: "flex", flexDirection: "column", gap: 14 }}>
+            <a href="#works" onClick={() => setMobileMenu(false)} style={{ color: "#fff", textDecoration: "none", fontSize: "0.95rem" }}>Works</a>
+            <a href="#pricing" onClick={() => setMobileMenu(false)} style={{ color: "#fff", textDecoration: "none", fontSize: "0.95rem" }}>Packages</a>
+            <a href="#payment" onClick={() => setMobileMenu(false)} style={{ color: "#fff", textDecoration: "none", fontSize: "0.95rem" }}>Payment (MiniPay &amp; OPay)</a>
+            <Link href="/dashboard" onClick={() => setMobileMenu(false)} style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem" }}>Dashboard</Link>
             <a
-              href="#portfolio"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem" }}
+              href="https://wa.me/2349069321502"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ background: "#4f46e5", color: "#fff", padding: "10px", borderRadius: 8, textDecoration: "none", textAlign: "center", fontWeight: 600, fontSize: "0.9rem" }}
             >
-              Works Done So Far
+              Chat on WhatsApp (09069321502)
             </a>
-            <a
-              href="#pricing"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem" }}
-            >
-              Packages &amp; Prices
-            </a>
-            <a
-              href="#calculator"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem" }}
-            >
-              Cost Estimator
-            </a>
-            <a
-              href="#testimonials"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem" }}
-            >
-              Client Testimonials
-            </a>
-            <a
-              href="#agent"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ color: "#4ade80", textDecoration: "none", fontSize: "0.9rem" }}
-            >
-              Partner Program (Earn 10%–25%)
-            </a>
-            <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
-              <Link
-                href="/dashboard"
-                onClick={() => setMobileMenuOpen(false)}
-                className="btn-ghost"
-                style={{ flex: 1, textDecoration: "none", justifyContent: "center" }}
-              >
-                Dashboard
-              </Link>
-              <a
-                href="https://wa.me/2349069321502"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-                style={{ flex: 1, textDecoration: "none", justifyContent: "center" }}
-              >
-                WhatsApp
-              </a>
-            </div>
           </div>
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section style={{ padding: "100px 20px 70px", position: "relative", overflow: "hidden" }}>
-        {/* Glow & Grid background */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 0,
-            pointerEvents: "none",
-            backgroundImage:
-              "linear-gradient(rgba(99,102,241,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.06) 1px,transparent 1px)",
-            backgroundSize: "44px 44px",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: -60,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "min(800px,100vw)",
-            height: 480,
-            background: "radial-gradient(ellipse,rgba(99,102,241,0.22) 0%,transparent 70%)",
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
+      {/* ── Hero ────────────────────────────────────────────────────────── */}
+      <section style={{ padding: "60px 16px 40px", maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 99, background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.3)", color: "#818cf8", fontSize: "0.78rem", fontWeight: 600, marginBottom: 18 }}>
+          <span>⚡ Web Developer · Lagos, Nigeria</span>
+        </div>
 
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-          {/* Badge */}
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "6px 16px",
-              borderRadius: 99,
-              marginBottom: 24,
-              background: "rgba(99,102,241,0.12)",
-              border: "1px solid rgba(99,102,241,0.3)",
-              fontSize: "0.78rem",
-              fontWeight: 600,
-              color: "#818cf8",
-            }}
+        <h1 style={{ fontSize: "clamp(1.9rem, 6vw, 3.2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: 16 }}>
+          Websites &amp; Platforms Built for Your Business.
+        </h1>
+
+        <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)", color: "#94a3b8", maxWidth: 580, margin: "0 auto 28px", lineHeight: 1.6 }}>
+          From fast 1-page booking sites to custom platforms. Built by Blessed Ogobor.
+          Tailored to your needs in whatever technology suits your business best.
+        </p>
+
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <a
+            href="#works"
+            style={{ background: "#4f46e5", color: "#fff", padding: "12px 24px", borderRadius: 12, textDecoration: "none", fontWeight: 700, fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: 6 }}
           >
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#4ade80" }} />
-            Web Development by Blessed Ogobor · Lagos, Nigeria
-          </div>
-
-          {/* Headline */}
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 800,
-              fontSize: "clamp(2.2rem, 7vw, 4.2rem)",
-              lineHeight: 1.08,
-              letterSpacing: "-0.04em",
-              color: "#fff",
-              marginBottom: 20,
-            }}
+            See My Works ↓
+          </a>
+          <a
+            href="https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20want%20to%20build%20a%20website%20for%20my%20business."
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ background: "rgba(255,255,255,0.06)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)", padding: "12px 24px", borderRadius: 12, textDecoration: "none", fontWeight: 600, fontSize: "0.92rem" }}
           >
-            High-Performance Websites That Turn Visitors Into{" "}
-            <span style={{ color: "#818cf8" }}>Paying Clients.</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p
-            style={{
-              fontSize: "clamp(0.95rem, 2.5vw, 1.15rem)",
-              color: "var(--text-muted)",
-              maxWidth: 680,
-              margin: "0 auto 36px",
-              lineHeight: 1.65,
-            }}
-          >
-            From <strong style={{ color: "#fff" }}>₦80,000 Festive Landing Pages</strong> for restaurants, lounges, and salons to <strong style={{ color: "#fff" }}>full-blown ₦800,000 custom web platforms</strong> with user dashboards and payments. Fast 5-day delivery, ₦0 monthly hosting fees on Vercel, and direct WhatsApp booking.
-          </p>
-
-          {/* CTAs */}
-          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 48 }}>
-            <a
-              href="#portfolio"
-              className="btn-primary glow"
-              style={{
-                textDecoration: "none",
-                fontSize: "1rem",
-                padding: "13px 30px",
-                borderRadius: 14,
-                fontWeight: 700,
-              }}
-            >
-              Explore Works Done So Far ↓
-            </a>
-            <a
-              href="#calculator"
-              className="btn-ghost"
-              style={{
-                textDecoration: "none",
-                fontSize: "1rem",
-                padding: "13px 26px",
-                borderRadius: 14,
-              }}
-            >
-              Calculate Your Cost →
-            </a>
-          </div>
-
-          {/* Quick Metrics Bar */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-              gap: 12,
-              padding: "18px 24px",
-              background: "rgba(15,15,28,0.75)",
-              border: "1px solid var(--border)",
-              borderRadius: 18,
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            <div>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#4ade80", fontSize: "1.4rem" }}>
-                ₦80,000
-              </div>
-              <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                Starting Investment
-              </div>
-            </div>
-            <div>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#818cf8", fontSize: "1.4rem" }}>
-                4 – 5 Days
-              </div>
-              <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                Festive Turnaround
-              </div>
-            </div>
-            <div>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#fbbf24", fontSize: "1.4rem" }}>
-                ₦0 / month
-              </div>
-              <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                Hosting on Vercel
-              </div>
-            </div>
-            <div>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#e879f9", fontSize: "1.4rem" }}>
-                100% Mobile
-              </div>
-              <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                Responsive &amp; WhatsApp Ready
-              </div>
-            </div>
-          </div>
+            Chat on WhatsApp →
+          </a>
         </div>
       </section>
 
-      {/* Value Pillars Section */}
-      <section style={{ padding: "40px 20px 60px", maxWidth: 1180, margin: "0 auto" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 18,
-          }}
-        >
-          {[
-            {
-              icon: "⚡",
-              title: "Festive Season Urgency",
-              desc: "December is the busiest month in Lagos and Nigeria. A live site with packages and a WhatsApp button answers questions automatically and books clients while competitors lose calls.",
-            },
-            {
-              icon: "📱",
-              title: "Mobile First & WhatsApp Routing",
-              desc: "90% of Nigerian customers browse on smartphones. Inquiries, food orders, and reservations go directly into your WhatsApp with pre-filled details.",
-            },
-            {
-              icon: "💰",
-              title: "No WordPress Sluggishness",
-              desc: "We handcraft custom sites using Next.js 16 and Vercel edge networks. No slow plugins, zero recurring hosting fees, and load times under 1.5 seconds.",
-            },
-            {
-              icon: "🛡️",
-              title: "Transparent 50/50 Payment",
-              desc: "Pay 50% deposit to commence development and 50% only when the website is live, fully functional, and approved by you.",
-            },
-          ].map((item, idx) => (
+      {/* ── Works Section ──────────────────────────────────────────────── */}
+      <section id="works" style={{ padding: "50px 16px", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.2rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 8 }}>
+            Works Done So Far
+          </h2>
+          <p style={{ color: "#94a3b8", fontSize: "0.9rem", maxWidth: 500, margin: "0 auto" }}>
+            Real live projects built for clients. Click to open live or inspect the code.
+          </p>
+        </div>
+
+        {/* Works Flex Grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 310px), 1fr))", gap: 16 }}>
+          {WORKS.map(work => {
+            const waMsg = encodeURIComponent(
+              `Hello Blessed! I saw your "${work.title}" project on Nexora Digital and I would like a similar website for my business.`
+            );
+
+            return (
+              <div
+                key={work.id}
+                style={{
+                  background: "#12141d",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: 16,
+                  padding: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  transition: "border-color 0.2s",
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: "0.72rem", fontWeight: 700, color: "#818cf8", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>
+                    {work.type}
+                  </div>
+                  <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#fff", marginBottom: 8 }}>
+                    {work.title}
+                  </h3>
+                  <p style={{ fontSize: "0.85rem", color: "#94a3b8", lineHeight: 1.5, marginBottom: 18 }}>
+                    {work.desc}
+                  </p>
+                </div>
+
+                <div>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+                    <a
+                      href={work.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        flex: 1,
+                        background: "#4f46e5",
+                        color: "#fff",
+                        padding: "8px 12px",
+                        borderRadius: 8,
+                        textDecoration: "none",
+                        fontSize: "0.8rem",
+                        fontWeight: 600,
+                        textAlign: "center",
+                      }}
+                    >
+                      Open Live Site ↗
+                    </a>
+                    {work.githubUrl && (
+                      <a
+                        href={work.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          background: "rgba(255,255,255,0.06)",
+                          color: "#94a3b8",
+                          border: "1px solid rgba(255,255,255,0.12)",
+                          padding: "8px 12px",
+                          borderRadius: 8,
+                          textDecoration: "none",
+                          fontSize: "0.8rem",
+                          fontWeight: 500,
+                          textAlign: "center",
+                        }}
+                      >
+                        Code
+                      </a>
+                    )}
+                  </div>
+                  <a
+                    href={`https://wa.me/2349069321502?text=${waMsg}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      textAlign: "center",
+                      fontSize: "0.78rem",
+                      color: "#818cf8",
+                      textDecoration: "none",
+                      padding: "4px 0",
+                    }}
+                  >
+                    I Want a Site Like This →
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Note on technologies */}
+        <div style={{ marginTop: 28, textAlign: "center", padding: "16px", background: "rgba(99,102,241,0.06)", border: "1px solid rgba(99,102,241,0.18)", borderRadius: 12 }}>
+          <p style={{ color: "#cbd5e1", fontSize: "0.85rem", margin: 0, lineHeight: 1.5 }}>
+            💡 <strong>Custom-Built for You:</strong> I craft websites and full web platforms in whatever language or framework fits your project. You get clean, fast, mobile-ready results.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Pricing Packages ────────────────────────────────────────────── */}
+      <section id="pricing" style={{ padding: "50px 16px", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.2rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 8 }}>
+            Simple Pricing
+          </h2>
+          <p style={{ color: "#94a3b8", fontSize: "0.9rem" }}>
+            50% deposit to commence build · 50% only when the site is live and approved.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 16 }}>
+          {SIMPLE_PACKAGES.map((pkg, idx) => (
             <div
               key={idx}
-              className="glass"
               style={{
+                background: idx === 1 ? "#171826" : "#12141d",
+                border: idx === 1 ? "1.5px solid #4f46e5" : "1px solid rgba(255,255,255,0.08)",
                 borderRadius: 16,
-                padding: 22,
-                border: "1px solid var(--border)",
+                padding: "24px 20px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
               }}
             >
-              <div style={{ fontSize: "1.8rem", marginBottom: 10 }}>{item.icon}</div>
-              <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1rem", color: "#fff", marginBottom: 6 }}>
-                {item.title}
-              </h3>
-              <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{item.desc}</p>
+              <div>
+                <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "#fff", marginBottom: 4 }}>
+                  {pkg.name}
+                </h3>
+                <div style={{ fontSize: "1.6rem", fontWeight: 800, color: "#6366f1", margin: "10px 0 4px" }}>
+                  {pkg.price}
+                </div>
+                <div style={{ fontSize: "0.78rem", color: "#94a3b8", marginBottom: 14 }}>
+                  ⚡ Delivery: <strong>{pkg.time}</strong>
+                </div>
+                <p style={{ fontSize: "0.85rem", color: "#cbd5e1", lineHeight: 1.55, marginBottom: 20 }}>
+                  {pkg.desc}
+                </p>
+              </div>
+
+              <a
+                href={`https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20want%20to%20order%20the%20${encodeURIComponent(pkg.name)}%20(${encodeURIComponent(pkg.price)})`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: idx === 1 ? "#4f46e5" : "rgba(255,255,255,0.08)",
+                  color: "#fff",
+                  padding: "10px",
+                  borderRadius: 10,
+                  textDecoration: "none",
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  textAlign: "center",
+                }}
+              >
+                Book Package via WhatsApp →
+              </a>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Portfolio: Works Done So Far */}
-      <PortfolioFilterSection />
-
-      {/* Pricing & Packages */}
-      <PricingPackagesSection />
-
-      {/* Interactive Website Cost Calculator */}
-      <WebsiteCostCalculator />
-
-      {/* Verified Real Testimonials */}
-      <RealTestimonialsSection />
-
-      {/* Remote Sales Agent / Partner Program */}
-      <AgentProgramSection />
-
-      {/* FAQ Section */}
-      <section style={{ padding: "80px 20px", maxWidth: 900, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "2rem", color: "#fff", marginBottom: 10 }}>
-            Frequently Asked Questions
+      {/* ── Payment Options (MiniPay & OPay) ─────────────────────────────── */}
+      <section id="payment" style={{ padding: "50px 16px 70px", maxWidth: 900, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.2rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 8 }}>
+            How to Pay
           </h2>
-          <p style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-            Straightforward answers for business owners.
+          <p style={{ color: "#94a3b8", fontSize: "0.9rem" }}>
+            Fast, zero-decline payments in Nigerian Naira. Scan with MiniPay or transfer to OPay.
           </p>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-          {[
-            {
-              q: "How fast will my website be live?",
-              a: "For our Festive Starter (₦80,000) and Festive Booking packages, turnaround is 4 to 7 working days once your deposit and content are confirmed. For large custom platforms (₦800,000), typical delivery is 20 to 25 working days.",
-            },
-            {
-              q: "Do I have to pay monthly hosting fees?",
-              a: "No! We deploy your website onto Vercel's global edge network, which provides ultra-fast enterprise-grade hosting with SSL encryption at zero monthly cost for small and medium business workloads.",
-            },
-            {
-              q: "How does the WhatsApp button work?",
-              a: "When a customer clicks the button on your website, it immediately opens WhatsApp on their phone with a pre-filled message (e.g. 'Hello, I want to book a table for 4 guests on Dec 24th'). You receive the lead instantly with zero friction.",
-            },
-            {
-              q: "What is your payment structure?",
-              a: "We work with a fair, transparent milestone schedule: 50% deposit to commence the project, and the remaining 50% only when the website is live, fully tested on mobile and desktop, and approved by you.",
-            },
-            {
-              q: "Can I update prices and photos after the site is launched?",
-              a: "Yes! All packages include 30 days of free changes. For businesses that update daily or weekly, our Professional and Custom Platform packages include a simple custom admin panel where you can edit content yourself without touching code.",
-            },
-          ].map((faq, i) => (
-            <div
-              key={i}
-              className="glass"
-              style={{
-                borderRadius: 14,
-                padding: "20px 24px",
-                border: "1px solid var(--border)",
-              }}
-            >
-              <h4 style={{ fontWeight: 700, fontSize: "0.95rem", color: "#fff", marginBottom: 8 }}>
-                {faq.q}
-              </h4>
-              <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
-                {faq.a}
-              </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 20 }}>
+          
+          {/* MiniPay Card */}
+          <div style={{ background: "#12141d", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+            <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#38bdf8", textTransform: "uppercase", marginBottom: 12 }}>
+              Option 1: MiniPay Scan-to-Pay
             </div>
-          ))}
-        </div>
-      </section>
+            
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/minipay-qr.png"
+              alt="MiniPay QR Code"
+              style={{ width: 170, height: 170, borderRadius: 14, objectFit: "contain", background: "#fff", marginBottom: 14, border: "2px solid #38bdf8" }}
+            />
 
-      {/* Final Call to Action */}
-      <section
-        style={{
-          padding: "80px 20px",
-          textAlign: "center",
-          background: "radial-gradient(ellipse at 50% 100%, rgba(99,102,241,0.2) 0%, transparent 70%)",
-        }}
-      >
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <div style={{ fontSize: "2.5rem", marginBottom: 12 }}>🎄 🚀</div>
-          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "2.2rem", color: "#fff", marginBottom: 14 }}>
-            Ready to Get Your Business Online?
-          </h2>
-          <p style={{ color: "var(--text-muted)", marginBottom: 28, fontSize: "0.95rem", lineHeight: 1.6 }}>
-            Don&apos;t let December bookings slip into your competitors&apos; hands. Send a WhatsApp message to Blessed Ogobor today for a free preview mockup with your business name.
-          </p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <a
-              href="https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20am%20ready%20to%20get%20my%20business%20website%20live.%20Can%20we%20talk?"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary glow"
+            <div style={{ fontSize: "0.8rem", color: "#94a3b8", marginBottom: 4 }}>
+              MiniPay Phone Number:
+            </div>
+            <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "#fff", marginBottom: 12 }}>
+              {BRAND.payment.miniPay.number}
+            </div>
+
+            <button
+              onClick={copyMiniPay}
               style={{
-                textDecoration: "none",
-                fontSize: "1rem",
-                padding: "14px 34px",
-                borderRadius: 14,
-                fontWeight: 700,
+                background: "rgba(56,189,248,0.15)",
+                border: "1px solid rgba(56,189,248,0.4)",
+                color: "#38bdf8",
+                padding: "8px 16px",
+                borderRadius: 8,
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                width: "100%",
+                maxWidth: 220,
               }}
             >
-              Chat with Blessed on WhatsApp (09069321502) →
-            </a>
+              {copiedMiniPay ? "✓ Copied!" : "📋 Copy MiniPay Number"}
+            </button>
+            <div style={{ fontSize: "0.72rem", color: "#64748b", marginTop: 10 }}>
+              Scan with Opera Mini or any smartphone camera to pay in Naira.
+            </div>
           </div>
-          <div style={{ marginTop: 14, fontSize: "0.78rem", color: "var(--text-muted)" }}>
-            Email: <a href="mailto:blessedogobor@gmail.com" style={{ color: "#818cf8" }}>blessedogobor@gmail.com</a> · Lagos &amp; Ogun, Nigeria
+
+          {/* OPay Bank Transfer Card */}
+          <div style={{ background: "#12141d", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#4ade80", textTransform: "uppercase", marginBottom: 12 }}>
+                Option 2: Direct Bank Transfer
+              </div>
+
+              <div style={{ background: "rgba(0,0,0,0.3)", borderRadius: 12, padding: "16px", border: "1px solid rgba(255,255,255,0.06)", marginBottom: 16 }}>
+                <div style={{ fontSize: "0.75rem", color: "#94a3b8", textTransform: "uppercase" }}>Bank</div>
+                <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "#fff", marginBottom: 10 }}>
+                  OPay (Paycom)
+                </div>
+
+                <div style={{ fontSize: "0.75rem", color: "#94a3b8", textTransform: "uppercase" }}>Account Number</div>
+                <div style={{ fontSize: "1.35rem", fontWeight: 800, color: "#4ade80", letterSpacing: "0.05em", margin: "2px 0 10px" }}>
+                  {BRAND.payment.opayBusiness.accountNumber}
+                </div>
+
+                <div style={{ fontSize: "0.75rem", color: "#94a3b8", textTransform: "uppercase" }}>Account Name</div>
+                <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "#fff" }}>
+                  {BRAND.payment.opayBusiness.accountName}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <button
+                onClick={copyOpay}
+                style={{
+                  background: "rgba(34,197,94,0.18)",
+                  border: "1px solid rgba(34,197,94,0.4)",
+                  color: "#4ade80",
+                  padding: "10px",
+                  borderRadius: 8,
+                  fontSize: "0.85rem",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  width: "100%",
+                  marginBottom: 10,
+                }}
+              >
+                {copiedOpay ? "✓ Copied Account!" : "📋 Copy OPay Account Number"}
+              </button>
+              <div style={{ fontSize: "0.75rem", color: "#94a3b8", textAlign: "center" }}>
+                Send payment screenshot on WhatsApp to <strong>09069321502</strong> for immediate start.
+              </div>
+            </div>
           </div>
+
         </div>
       </section>
 
-      {/* Footer */}
-      <footer
-        style={{
-          borderTop: "1px solid var(--border)",
-          padding: "36px 20px",
-          textAlign: "center",
-          fontSize: "0.82rem",
-          color: "var(--text-muted)",
-          background: "rgba(9,9,15,0.9)",
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-          <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#fff", fontSize: "1rem" }}>
-            nexora<span style={{ color: "#818cf8" }}>.</span>digital
-          </div>
-          <div style={{ display: "flex", gap: 20, fontSize: "0.8rem" }}>
-            <a href="#portfolio" style={{ color: "var(--text-muted)", textDecoration: "none" }}>Works</a>
-            <a href="#pricing" style={{ color: "var(--text-muted)", textDecoration: "none" }}>Pricing</a>
-            <a href="#calculator" style={{ color: "var(--text-muted)", textDecoration: "none" }}>Calculator</a>
-            <a href="#agent" style={{ color: "#4ade80", textDecoration: "none" }}>Sales Agents</a>
-            <Link href="/dashboard" style={{ color: "var(--text-muted)", textDecoration: "none" }}>Dashboard</Link>
+      {/* ── Footer ──────────────────────────────────────────────────────── */}
+      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "28px 16px", textAlign: "center", fontSize: "0.82rem", color: "#64748b" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+          <div style={{ fontWeight: 700, color: "#fff" }}>
+            nexora<span style={{ color: "#6366f1" }}>.</span>digital
           </div>
           <div>
-            © {new Date().getFullYear()} Nexora Digital · Built by Blessed Ogobor
+            Built by Blessed Ogobor · WhatsApp: 09069321502
+          </div>
+          <div>
+            © {new Date().getFullYear()} Nexora Digital
           </div>
         </div>
       </footer>
