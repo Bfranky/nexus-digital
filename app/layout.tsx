@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nexora Digital — High-Converting Websites & Web Platforms | Lagos, Nigeria",
-  description: "Handcrafted websites, booking engines, and digital platforms for Nigerian businesses. Built by Blessed Ogobor. Fast 5-day festive delivery, ₦0 monthly hosting on Vercel, and direct WhatsApp integrations.",
+  title: "Nexus Digital — Websites & Web Platforms | Lagos, Nigeria",
+  description: "Websites, booking engines, and digital platforms for businesses. Built by Ogobor Blessing. Fast delivery, zero monthly hosting, and direct WhatsApp integrations.",
   keywords: [
     "web development Lagos",
     "website designer Nigeria",
-    "Nexora Digital",
-    "Blessed Ogobor",
+    "Nexus Digital",
+    "Ogobor Blessing",
     "business website Nigeria",
     "festive website packages",
-    "event centre booking website",
-    "restaurant WhatsApp ordering website"
+    "booking website"
   ],
-  authors: [{ name: "Blessed Ogobor", url: "https://portfolio-zeta-three-34.vercel.app" }],
+  authors: [{ name: "Ogobor Blessing", url: "https://nexus-digital-dun.vercel.app" }],
   openGraph: {
-    title: "Nexora Digital — Web Development & Platforms | Lagos, Nigeria",
-    description: "From ₦80,000 Festive Starters to Full Enterprise Platforms. Turn visitors into paying clients.",
-    url: "https://portfolio-zeta-three-34.vercel.app",
-    siteName: "Nexora Digital",
+    title: "Nexus Digital — Web Development & Platforms | Lagos, Nigeria",
+    description: "From ₦80,000 Starter Sites to Custom Web Platforms.",
+    url: "https://nexus-digital-dun.vercel.app",
+    siteName: "Nexus Digital",
     type: "website",
   },
 };

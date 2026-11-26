@@ -16,7 +16,7 @@ export default function AIAssistantPage() {
     const cat = category || "Business";
 
     if (pitchType === "festive") {
-      return `Good day. My name is Blessed, and I'm a web developer with Nexora Digital based in Lagos.
+      return `Good day. My name is Blessing, and I'm a web developer with Nexus Digital based in Lagos.
 
 I came across ${biz} in ${loc} and noticed you don't have a dedicated website yet. December is the busiest time of the year, and customers will look online before they choose.
 
@@ -26,11 +26,11 @@ We can have a festive version live in about 5 days (from ₦80,000).
 
 Would you like a free preview with ${biz}'s name on it?
 Thank you.
-— Blessed Ogobor | Nexora Digital (09069321502)`;
+— Ogobor Blessing | Nexus Digital (09069321502)`;
     }
 
     if (pitchType === "quote") {
-      return `Good day, thank you for your interest in Nexora Digital web solutions for ${biz}.
+      return `Good day, thank you for your interest in Nexus Digital web solutions for ${biz}.
 
 Here are our transparent pricing packages:
 
@@ -57,15 +57,15 @@ Here are our transparent pricing packages:
    • Custom portal with user accounts, roles, dashboards, and automated workflows.
 
 Payment terms: 50% deposit to start, 50% upon live launch and testing.
-Official Bank Account: OPay (Paycom) - 6110509465 (Blessed Ogobor / Nexora Digital)
+Official Bank Account: OPay (Paycom) - 6110509465 (Ogobor Blessing)
 
 Which tier best fits ${biz}'s goals this season?`;
     }
 
     if (pitchType === "agent_welcome") {
-      return `Welcome to the Nexora Digital Sales Team! 🚀
+      return `Welcome to the Nexus Digital Sales Team! 🚀
 
-Nexora Digital builds high-performance websites for businesses across Nigeria (starting from ₦80,000 up to ₦800,000).
+Nexus Digital builds high-performance websites for businesses across Nigeria (starting from ₦80,000 up to ₦800,000).
 
 Here is how your commission works:
 • 10% for every warm referral you introduce (when we close the sale)
@@ -83,12 +83,12 @@ Your target: Reach out to 10 businesses daily using our proven scripts. Let's ma
 
 I noticed you have strong customer reviews in ${loc}, but new customers searching online might miss your full catalog and direct WhatsApp booking.
 
-At Nexora Digital, we create sleek, mobile-friendly websites that showcase your ${cat} offerings, display transparent prices, and allow customers to place orders or make bookings straight into your WhatsApp.
+At Nexus Digital, we create sleek, mobile-friendly websites that showcase your ${cat} offerings, display transparent prices, and allow customers to place orders or make bookings straight into your WhatsApp.
 
 Let me know if you would love a complimentary mockup link to preview how your website would look.
 
 Best regards,
-Blessed Ogobor — Nexora Digital
+Ogobor Blessing — Nexus Digital
 WhatsApp: 09069321502`;
   };
 

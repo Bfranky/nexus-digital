@@ -4,14 +4,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const LINKS = [
-  { href:"/dashboard",            icon:"⬛", label:"Dashboard"    },
-  { href:"/dashboard/businesses", icon:"🏢", label:"Businesses"   },
-  { href:"/dashboard/import",     icon:"📋", label:"Import"       },
-  { href:"/dashboard/projects",   icon:"📁", label:"Projects"     },
-  { href:"/dashboard/payments",   icon:"💰", label:"Payments"     },
-  { href:"/dashboard/analytics",  icon:"📊", label:"Analytics"    },
-  { href:"/dashboard/ai",         icon:"✨", label:"AI Assistant" },
-  { href:"/dashboard/settings",   icon:"⚙️", label:"Settings"     },
+  { href:"/dashboard",            icon:"⬛", label:"Dashboard"      },
+  { href:"/dashboard/intake",     icon:"📝", label:"Project Intake" },
+  { href:"/dashboard/businesses", icon:"🏢", label:"Businesses"     },
+  { href:"/dashboard/projects",   icon:"📁", label:"Projects"       },
+  { href:"/dashboard/payments",   icon:"💰", label:"Payments"       },
+  { href:"/dashboard/import",     icon:"📋", label:"Import"         },
+  { href:"/dashboard/analytics",  icon:"📊", label:"Analytics"      },
+  { href:"/dashboard/ai",         icon:"✨", label:"AI Assistant"   },
+  { href:"/dashboard/settings",   icon:"⚙️", label:"Settings"       },
 ];
 
 interface Props { open: boolean; onClose: () => void; }
@@ -72,7 +73,7 @@ export default function Sidebar({ open, onClose }: Props) {
         {/* Logo + close button */}
         <div style={{ padding:"18px 16px 14px", borderBottom:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <span style={{ fontFamily:"var(--font-display)", fontWeight:800, fontSize:"1.05rem", letterSpacing:"-0.02em" }}>
-            nexora<span style={{ color:"#818cf8" }}>.</span>digital
+            nexus<span style={{ color:"#818cf8" }}>.</span>digital
           </span>
           {isMobile && (
             <button onClick={onClose} style={{ background:"none", border:"1px solid var(--border)", borderRadius:8, color:"var(--text-muted)", cursor:"pointer", width:28, height:28, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"0.85rem" }}>
@@ -105,8 +106,8 @@ export default function Sidebar({ open, onClose }: Props) {
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
             <div style={{ width:32, height:32, borderRadius:"50%", background:"linear-gradient(135deg,#6366f1,#8b5cf6)", display:"flex", alignItems:"center", justifyContent:"center", fontWeight:700, fontSize:"0.75rem", color:"#fff", flexShrink:0 }}>ND</div>
             <div>
-              <div style={{ fontSize:"0.8rem", fontWeight:600, color:"var(--text)" }}>Blessed Ogobor</div>
-              <div style={{ fontSize:"0.7rem", color:"var(--text-muted)" }}>nexora.digital</div>
+              <div style={{ fontSize:"0.8rem", fontWeight:600, color:"var(--text)" }}>Ogobor Blessing</div>
+              <div style={{ fontSize:"0.7rem", color:"var(--text-muted)" }}>nexus.digital · Admin</div>
             </div>
           </div>
         </div>

@@ -49,10 +49,10 @@ export default function SettingsPage() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {[
-              { label: "Full Name",    placeholder: "Your name",           defaultValue: "Blessed Ogobor" },
+              { label: "Full Name",    placeholder: "Your name",           defaultValue: "Ogobor Blessing" },
               { label: "Email",        placeholder: "you@example.com",     defaultValue: "blessedogobor@gmail.com" },
               { label: "Phone",        placeholder: "+234 800 000 0000",   defaultValue: "09069321502" },
-              { label: "Agency Name",  placeholder: "Your agency",         defaultValue: "Nexora Digital" },
+              { label: "Agency Name",  placeholder: "Your agency",         defaultValue: "Nexus Digital" },
             ].map(f => (
               <div key={f.label}>
                 <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 8 }}>{f.label}</label>
@@ -74,13 +74,13 @@ export default function SettingsPage() {
           {[
             {
               name: "OPay Business Account",
-              desc: "Primary Nigerian settlement bank account: 6110509465 (Blessed Ogobor / Nexora Digital).",
+              desc: "Primary Nigerian settlement bank account: 6110509465 (Ogobor Blessing / Nexus Digital).",
               status: "connected",
               color: "#4ade80", icon: "🏦",
             },
             {
               name: "MiniPay (Scan to Pay)",
-              desc: "Official QR Code & MiniPay number: +234 812 141 4107. Auto-settles to OPay account.",
+              desc: "Official QR Code & MiniPay number: +234 812 141 4107 (Ogobor Blessing). Auto-settles to OPay account.",
               status: "connected",
               color: "#06b6d4", icon: "📱",
             },

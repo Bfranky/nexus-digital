@@ -43,9 +43,28 @@ export default function ProjectsPage() {
 
   return (
     <div>
-      <div style={{ marginBottom:22 }}>
-        <h1 style={{ fontFamily:"var(--font-display)", fontWeight:800, fontSize:"1.6rem", color:"#fff" }}>Projects</h1>
-        <p style={{ color:"var(--text-muted)", fontSize:"0.875rem", marginTop:4 }}>{active.length} active · {completed.length} completed</p>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", flexWrap:"wrap", gap:14, marginBottom:22 }}>
+        <div>
+          <h1 style={{ fontFamily:"var(--font-display)", fontWeight:800, fontSize:"1.6rem", color:"#fff" }}>Projects</h1>
+          <p style={{ color:"var(--text-muted)", fontSize:"0.875rem", marginTop:4 }}>{active.length} active · {completed.length} completed</p>
+        </div>
+        <Link
+          href="/dashboard/intake"
+          style={{
+            background: "#6366f1",
+            color: "#fff",
+            textDecoration: "none",
+            padding: "9px 16px",
+            borderRadius: 10,
+            fontSize: "0.85rem",
+            fontWeight: 600,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+          }}
+        >
+          <span>➕</span> New Project Intake
+        </Link>
       </div>
       {loading ? <div style={{ textAlign:"center", padding:"60px 0", color:"var(--text-muted)" }}>Loading…</div> : (
         <>

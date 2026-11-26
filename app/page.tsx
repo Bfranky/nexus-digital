@@ -24,14 +24,14 @@ export default function Home() {
   return (
     <div style={{ background: "#0c0d12", color: "#f1f5f9", minHeight: "100vh", fontFamily: "var(--font-body, sans-serif)", overflowX: "hidden" }}>
       
-      {/* ── Navigation ─────────────────────────────────────────────────── */}
-      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(12, 13, 18, 0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+      {/* ── Navigation (Public Only - No Admin/Staff links) ───────────── */}
+      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(12, 13, 18, 0.94)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 16px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>
             <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#6366f1", display: "inline-block" }} />
-            <span style={{ fontSize: "1.15rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
-              nexora<span style={{ color: "#6366f1" }}>.</span>digital
+            <span style={{ fontSize: "1.2rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
+              nexus<span style={{ color: "#6366f1" }}>.</span>digital
             </span>
           </Link>
 
@@ -39,17 +39,14 @@ export default function Home() {
           <div className="hidden md:flex" style={{ alignItems: "center", gap: 24 }}>
             <a href="#works" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem", fontWeight: 500 }}>Works</a>
             <a href="#pricing" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem", fontWeight: 500 }}>Packages</a>
-            <a href="#payment" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem", fontWeight: 500 }}>Payment</a>
-            <Link href="/dashboard" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.85rem", padding: "6px 12px", borderRadius: 8, background: "rgba(255,255,255,0.05)" }}>
-              Dashboard ↗
-            </Link>
+            <a href="#payment" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem", fontWeight: 500 }}>How to Pay</a>
             <a
-              href="https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20am%20interested%20in%20building%20a%20website%20for%20my%20business."
+              href="https://wa.me/2349069321502?text=Hello%20Blessing!%20I%20am%20interested%20in%20building%20a%20website%20for%20my%20business."
               target="_blank"
               rel="noopener noreferrer"
-              style={{ background: "#4f46e5", color: "#fff", padding: "8px 16px", borderRadius: 10, textDecoration: "none", fontSize: "0.85rem", fontWeight: 600 }}
+              style={{ background: "#4f46e5", color: "#fff", padding: "8px 18px", borderRadius: 10, textDecoration: "none", fontSize: "0.85rem", fontWeight: 600 }}
             >
-              WhatsApp
+              Chat on WhatsApp
             </a>
           </div>
 
@@ -64,13 +61,12 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Dropdown (Public Only) */}
         {mobileMenu && (
           <div style={{ background: "#13141c", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "16px", display: "flex", flexDirection: "column", gap: 14 }}>
             <a href="#works" onClick={() => setMobileMenu(false)} style={{ color: "#fff", textDecoration: "none", fontSize: "0.95rem" }}>Works</a>
             <a href="#pricing" onClick={() => setMobileMenu(false)} style={{ color: "#fff", textDecoration: "none", fontSize: "0.95rem" }}>Packages</a>
-            <a href="#payment" onClick={() => setMobileMenu(false)} style={{ color: "#fff", textDecoration: "none", fontSize: "0.95rem" }}>Payment (MiniPay &amp; OPay)</a>
-            <Link href="/dashboard" onClick={() => setMobileMenu(false)} style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem" }}>Dashboard</Link>
+            <a href="#payment" onClick={() => setMobileMenu(false)} style={{ color: "#fff", textDecoration: "none", fontSize: "0.95rem" }}>How to Pay</a>
             <a
               href="https://wa.me/2349069321502"
               target="_blank"
@@ -84,29 +80,29 @@ export default function Home() {
       </nav>
 
       {/* ── Hero ────────────────────────────────────────────────────────── */}
-      <section style={{ padding: "60px 16px 40px", maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 99, background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.3)", color: "#818cf8", fontSize: "0.78rem", fontWeight: 600, marginBottom: 18 }}>
-          <span>⚡ Web Developer · Lagos, Nigeria</span>
+      <section style={{ padding: "50px 16px 36px", maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 99, background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.3)", color: "#818cf8", fontSize: "0.78rem", fontWeight: 600, marginBottom: 16 }}>
+          <span>⚡ Web Developer · Ogobor Blessing</span>
         </div>
 
-        <h1 style={{ fontSize: "clamp(1.9rem, 6vw, 3.2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: 16 }}>
+        <h1 style={{ fontSize: "clamp(1.9rem, 6vw, 3.2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: 14 }}>
           Websites &amp; Platforms Built for Your Business.
         </h1>
 
-        <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)", color: "#94a3b8", maxWidth: 580, margin: "0 auto 28px", lineHeight: 1.6 }}>
-          From fast 1-page booking sites to custom platforms. Built by Blessed Ogobor.
-          Tailored to your needs in whatever technology suits your business best.
+        <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)", color: "#94a3b8", maxWidth: 580, margin: "0 auto 26px", lineHeight: 1.6 }}>
+          From fast 1-page booking sites to custom platforms. Built by Ogobor Blessing.
+          Custom-coded to your exact specifications in whatever language fits your business best.
         </p>
 
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <a
             href="#works"
-            style={{ background: "#4f46e5", color: "#fff", padding: "12px 24px", borderRadius: 12, textDecoration: "none", fontWeight: 700, fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: 6 }}
+            style={{ background: "#4f46e5", color: "#fff", padding: "12px 24px", borderRadius: 12, textDecoration: "none", fontWeight: 700, fontSize: "0.92rem" }}
           >
             See My Works ↓
           </a>
           <a
-            href="https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20want%20to%20build%20a%20website%20for%20my%20business."
+            href="https://wa.me/2349069321502?text=Hello%20Blessing!%20I%20want%20to%20build%20a%20website%20for%20my%20business."
             target="_blank"
             rel="noopener noreferrer"
             style={{ background: "rgba(255,255,255,0.06)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)", padding: "12px 24px", borderRadius: 12, textDecoration: "none", fontWeight: 600, fontSize: "0.92rem" }}
@@ -117,21 +113,21 @@ export default function Home() {
       </section>
 
       {/* ── Works Section ──────────────────────────────────────────────── */}
-      <section id="works" style={{ padding: "50px 16px", maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 36 }}>
+      <section id="works" style={{ padding: "40px 16px", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
           <h2 style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.2rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 8 }}>
             Works Done So Far
           </h2>
-          <p style={{ color: "#94a3b8", fontSize: "0.9rem", maxWidth: 500, margin: "0 auto" }}>
+          <p style={{ color: "#94a3b8", fontSize: "0.9rem", maxWidth: 520, margin: "0 auto" }}>
             Real live projects built for clients. Click to open live or inspect the code.
           </p>
         </div>
 
-        {/* Works Flex Grid */}
+        {/* Works Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 310px), 1fr))", gap: 16 }}>
           {WORKS.map(work => {
             const waMsg = encodeURIComponent(
-              `Hello Blessed! I saw your "${work.title}" project on Nexora Digital and I would like a similar website for my business.`
+              `Hello Blessing! I saw your "${work.title}" project on Nexus Digital and I would like a similar website for my business.`
             );
 
             return (
@@ -145,7 +141,6 @@ export default function Home() {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  transition: "border-color 0.2s",
                 }}
               >
                 <div>
@@ -224,16 +219,16 @@ export default function Home() {
         </div>
 
         {/* Note on technologies */}
-        <div style={{ marginTop: 28, textAlign: "center", padding: "16px", background: "rgba(99,102,241,0.06)", border: "1px solid rgba(99,102,241,0.18)", borderRadius: 12 }}>
+        <div style={{ marginTop: 24, textAlign: "center", padding: "16px", background: "rgba(99,102,241,0.06)", border: "1px solid rgba(99,102,241,0.18)", borderRadius: 12 }}>
           <p style={{ color: "#cbd5e1", fontSize: "0.85rem", margin: 0, lineHeight: 1.5 }}>
-            💡 <strong>Custom-Built for You:</strong> I craft websites and full web platforms in whatever language or framework fits your project. You get clean, fast, mobile-ready results.
+            💡 <strong>Custom-Built for You:</strong> I build websites and platforms irrespective of the language or framework used. Whatever your business needs, I can make it.
           </p>
         </div>
       </section>
 
       {/* ── Pricing Packages ────────────────────────────────────────────── */}
-      <section id="pricing" style={{ padding: "50px 16px", maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 36 }}>
+      <section id="pricing" style={{ padding: "40px 16px", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
           <h2 style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.2rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 8 }}>
             Simple Pricing
           </h2>
@@ -272,7 +267,7 @@ export default function Home() {
               </div>
 
               <a
-                href={`https://wa.me/2349069321502?text=Hello%20Blessed!%20I%20want%20to%20order%20the%20${encodeURIComponent(pkg.name)}%20(${encodeURIComponent(pkg.price)})`}
+                href={`https://wa.me/2349069321502?text=Hello%20Blessing!%20I%20want%20to%20order%20the%20${encodeURIComponent(pkg.name)}%20(${encodeURIComponent(pkg.price)})`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -293,8 +288,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Payment Options (MiniPay & OPay) ─────────────────────────────── */}
-      <section id="payment" style={{ padding: "50px 16px 70px", maxWidth: 900, margin: "0 auto" }}>
+      {/* ── How to Pay (Cropped QR Code & OPay Transfer) ────────────────── */}
+      <section id="payment" style={{ padding: "40px 16px 60px", maxWidth: 900, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 32 }}>
           <h2 style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.2rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 8 }}>
             How to Pay
@@ -306,23 +301,33 @@ export default function Home() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 20 }}>
           
-          {/* MiniPay Card */}
+          {/* Option 1: MiniPay Scan-to-Pay (Cropped Clean Barcode QR) */}
           <div style={{ background: "#12141d", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-            <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#38bdf8", textTransform: "uppercase", marginBottom: 12 }}>
-              Option 1: MiniPay Scan-to-Pay
+            <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#38bdf8", textTransform: "uppercase", marginBottom: 14 }}>
+              Option 1: Scan Barcode to Pay
             </div>
             
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/minipay-qr.png"
-              alt="MiniPay QR Code"
-              style={{ width: 170, height: 170, borderRadius: 14, objectFit: "contain", background: "#fff", marginBottom: 14, border: "2px solid #38bdf8" }}
-            />
-
-            <div style={{ fontSize: "0.8rem", color: "#94a3b8", marginBottom: 4 }}>
-              MiniPay Phone Number:
+            {/* Cropped Clean QR Barcode */}
+            <div style={{ padding: "10px", background: "#fff", borderRadius: 16, border: "2px solid #38bdf8", marginBottom: 14, display: "inline-block" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/minipay-qr.png"
+                alt="MiniPay QR Barcode"
+                style={{ width: 180, height: 180, display: "block", objectFit: "contain" }}
+              />
             </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "#fff", marginBottom: 12 }}>
+
+            <div style={{ fontSize: "0.78rem", color: "#94a3b8", textTransform: "uppercase" }}>
+              Account Name
+            </div>
+            <div style={{ fontSize: "1rem", fontWeight: 700, color: "#fff", marginBottom: 8 }}>
+              {BRAND.payment.miniPay.accountName}
+            </div>
+
+            <div style={{ fontSize: "0.78rem", color: "#94a3b8", textTransform: "uppercase" }}>
+              MiniPay Phone Number
+            </div>
+            <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "#38bdf8", marginBottom: 12 }}>
               {BRAND.payment.miniPay.number}
             </div>
 
@@ -341,17 +346,17 @@ export default function Home() {
                 maxWidth: 220,
               }}
             >
-              {copiedMiniPay ? "✓ Copied!" : "📋 Copy MiniPay Number"}
+              {copiedMiniPay ? "✓ Copied!" : "📋 Copy Number"}
             </button>
             <div style={{ fontSize: "0.72rem", color: "#64748b", marginTop: 10 }}>
               Scan with Opera Mini or any smartphone camera to pay in Naira.
             </div>
           </div>
 
-          {/* OPay Bank Transfer Card */}
+          {/* Option 2: OPay Direct Bank Transfer */}
           <div style={{ background: "#12141d", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#4ade80", textTransform: "uppercase", marginBottom: 12 }}>
+              <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#4ade80", textTransform: "uppercase", marginBottom: 14 }}>
                 Option 2: Direct Bank Transfer
               </div>
 
@@ -400,17 +405,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "28px 16px", textAlign: "center", fontSize: "0.82rem", color: "#64748b" }}>
+      {/* ── Footer (Public Only) ────────────────────────────────────────── */}
+      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "26px 16px", textAlign: "center", fontSize: "0.82rem", color: "#64748b" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
           <div style={{ fontWeight: 700, color: "#fff" }}>
-            nexora<span style={{ color: "#6366f1" }}>.</span>digital
+            nexus<span style={{ color: "#6366f1" }}>.</span>digital
           </div>
           <div>
-            Built by Blessed Ogobor · WhatsApp: 09069321502
+            Built by Ogobor Blessing · WhatsApp: 09069321502
           </div>
           <div>
-            © {new Date().getFullYear()} Nexora Digital
+            © {new Date().getFullYear()} Nexus Digital
           </div>
         </div>
       </footer>
